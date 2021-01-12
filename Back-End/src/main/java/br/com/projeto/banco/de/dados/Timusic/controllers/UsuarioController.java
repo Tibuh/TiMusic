@@ -1,25 +1,35 @@
-package br.com.projeto.banco.de.dados.Timusic.resources;
+package br.com.projeto.banco.de.dados.Timusic.controllers;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.projeto.banco.de.dados.Timusic.dto.UsuarioDto;
 import br.com.projeto.banco.de.dados.Timusic.entities.Usuario;
 import br.com.projeto.banco.de.dados.Timusic.services.UsuarioServico;
 
 @RestController
 @RequestMapping(value = "/usuario")
-public class UsuarioResource {
+public class UsuarioController {
 
 	@Autowired
 	private UsuarioServico usuarioServico;
+	
+	//Retorna todos os Usuarios Cadastrados
 	@GetMapping
 	public ResponseEntity<List<Usuario>> findAll() {
 		List<Usuario> listaUsuario = usuarioServico.findAll();
 		return ResponseEntity.ok().body(listaUsuario);
+	}
+	
+	@PostMapping("/autenticar")
+	public ResponseEntity<Usuario> autenticarUsuario(@RequestBody UsuarioDto usr) {
+		return ResponseEntity.ok().body(usuarioServico.autenticar(usr.getEmail(), usr.getSenha()));
 	}
 }

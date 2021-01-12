@@ -28,6 +28,7 @@ public class UsuarioController {
 		return ResponseEntity.ok().body(listaUsuario);
 	}
 	
+	//INSERT INTO TB_USR(CPF, DATA_CADASTRO, EMAIL, NOME, PASSWORD) VALUES ('069', parsedatetime('17-09-2012 18:47:52.69', 'dd-MM-yyyy hh:mm:ss.SS'), 'emailtest', 'vitor', '123456')
 	@PostMapping("/autenticar")
 	public ResponseEntity<Usuario> autenticarUsuario(@RequestBody UsuarioDto usr) {
 		return ResponseEntity.ok().body(usuarioServico.autenticar(usr.getEmail(), usr.getSenha()));

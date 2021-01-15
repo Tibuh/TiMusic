@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component';
+
 
 
 
@@ -11,16 +11,14 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     NavbarComponent,
     SidebarComponent,
-    FooterComponent,
-    HomeComponent],
+    FooterComponent],
   imports: [
     CommonModule
   ],
   exports: [
     NavbarComponent,
     SidebarComponent,
-    FooterComponent,
-    HomeComponent
+    FooterComponent
   ]
 })
 export class TemplateModule { }
